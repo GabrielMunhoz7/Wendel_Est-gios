@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Entrevistas</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Hey! Everybody</h1>
-    <h1>Habemus Papam!/<h1>
+  <div class="container">
+    <header>
+      <h1>🚀 Portal de Entrevistas de Estágio</h1>
+      <p>Cadastre, visualize e gerencie entrevistas de forma interativa.</p>
+    </header>
+
+    <main>
+      <section class="form-section">
+        <h2>Nova Entrevista</h2>
+        <form id="formEntrevista">
+          <input type="text" id="nome" placeholder="Nome do Candidato" required />
+          <input type="text" id="curso" placeholder="Curso" required />
+          <select id="status" required>
+            <option value="">Status da Entrevista</option>
+            <option value="Aprovado">✅ Aprovado</option>
+            <option value="Pendente">🕒 Pendente</option>
+            <option value="Reprovado">❌ Reprovado</option>
+          </select>
+          <input type="text" id="nivel" placeholder="Nível Técnico (opcional)" />
+          <button type="submit">Adicionar Entrevista</button>
+        </form>
+      </section>
+
+      <section class="lista-section">
+        <h2>📋 Entrevistas Cadastradas</h2>
+        <div id="listaEntrevistas"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
