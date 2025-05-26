@@ -39,12 +39,18 @@ header p {
   margin-top: 0.5rem;
 }
 
-/* Formulário */
-.form-section h2 {
+/* Sessões */
+main section {
+  margin-bottom: 2rem;
+}
+
+/* Títulos de seções */
+main h2 {
   margin-bottom: 1rem;
   color: #34495e;
 }
 
+/* Formulário principal */
 form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -83,6 +89,7 @@ form button:hover {
   color: #2c3e50;
 }
 
+/* Cartão de entrevista */
 .card {
   background: #ecf0f1;
   border-left: 5px solid #3498db;
@@ -107,8 +114,14 @@ form button:hover {
   color: #555;
 }
 
-.card button {
+/* Botões dentro de cards */
+.card .card-buttons {
+  display: flex;
+  gap: 0.5rem;
   margin-top: 0.7rem;
+}
+
+.card .card-buttons button {
   background-color: #e74c3c;
   color: white;
   border: none;
@@ -118,7 +131,47 @@ form button:hover {
   transition: background 0.2s;
 }
 
-.card button:hover {
+.card .card-buttons button:hover {
   background-color: #c0392b;
 }
 
+/* Formulário de gerenciamento (editar/excluir) */
+.form-gestao {
+  margin-top: 2rem;
+  background-color: #f4f6f7;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.form-gestao h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.form-gestao input,
+.form-gestao select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+}
+
+.form-gestao button {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #27ae60;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-gestao button:hover {
+  background-color: #1e8449;
+}

@@ -11,10 +11,11 @@
   <div class="container">
     <header>
       <h1>🚀 Portal de Entrevistas de Estágio</h1>
-      <p>Cadastre, visualize e gerencie entrevistas de forma interativa.</p>
+      <p>Cadastre, visualize e gerencie entrevistas com base no sistema de POO.</p>
     </header>
 
     <main>
+      <!-- Formulário de Nova Entrevista -->
       <section class="form-section">
         <h2>Nova Entrevista</h2>
         <form id="formEntrevista">
@@ -26,14 +27,38 @@
             <option value="Pendente">🕒 Pendente</option>
             <option value="Reprovado">❌ Reprovado</option>
           </select>
-          <input type="text" id="nivel" placeholder="Nível Técnico (opcional)" />
+          <input type="text" id="nivel_tecnico" placeholder="Nível Técnico (somente se for técnico)" />
           <button type="submit">Adicionar Entrevista</button>
         </form>
       </section>
 
+      <!-- Lista de Entrevistas -->
       <section class="lista-section">
         <h2>📋 Entrevistas Cadastradas</h2>
-        <div id="listaEntrevistas"></div>
+        <div id="listaEntrevistas">
+          <!-- As entrevistas cadastradas serão exibidas aqui dinamicamente via JS -->
+        </div>
+      </section>
+
+      <!-- Ações de Gerenciamento -->
+      <section class="gerenciar-section">
+        <h2>🛠️ Gerenciar Entrevista</h2>
+        <form id="formGerenciar">
+          <input type="number" id="id_entrevista" placeholder="ID da Entrevista" required />
+          <input type="text" id="novo_nome" placeholder="Novo Nome (opcional)" />
+          <select id="novo_status">
+            <option value="">Alterar Status</option>
+            <option value="Aprovado">✅ Aprovado</option>
+            <option value="Pendente">🕒 Pendente</option>
+            <option value="Reprovado">❌ Reprovado</option>
+          </select>
+          <button type="submit">Atualizar Dados</button>
+        </form>
+
+        <form id="formExcluir" style="margin-top: 1rem;">
+          <input type="number" id="id_excluir" placeholder="ID da Entrevista para excluir" required />
+          <button type="submit" style="background-color: crimson; color: white;">Excluir Entrevista</button>
+        </form>
       </section>
     </main>
   </div>
