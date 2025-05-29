@@ -2,6 +2,7 @@ const form = document.getElementById('formEntrevista');
 const lista = document.getElementById('listaEntrevistas');
 
 let entrevistas = JSON.parse(localStorage.getItem('entrevistas')) || [];
+let editIndex = null; // Para rastrear se está editando
 
 // Função para criar card na tela
 function criarCard(entrevista, index) {
@@ -13,25 +14,38 @@ function criarCard(entrevista, index) {
     <p><strong>Curso:</strong> ${entrevista.curso}</p>
     <p><strong>Status:</strong> ${entrevista.status}</p>
     <p><strong>Nível Técnico:</strong> ${entrevista.nivel || 'Não informado'}</p>
-    <button>Excluir</button>
+    <button class="btn-excluir">Excluir</button>
+    <button class="btn-editar" style="margin-left: 0.5rem; background-color: #f39c12;">Editar</button>
   `;
 
-  // Excluir entrevista
-  card.querySelector('button').addEventListener('click', () => {
+  // Botão de excluir
+  card.querySelector('.btn-excluir').addEventListener('click', () => {
     entrevistas.splice(index, 1);
     salvarEAtualizar();
+  });
+
+  // Botão de editar
+  card.querySelector('.btn-editar').addEventListener('click', () => {
+    const entrevistaEdit = entrevistas[index];
+    document.getElementById('nome').value = entrevistaEdit.nome;
+    document.getElementById('curso').value = entrevistaEdit.curso;
+    document.getElementById('status').value = entrevistaEdit.status;
+    document.getElementById('nivel').value = entrevistaEdit.nivel;
+
+    editIndex = index;
+    form.querySelector('button[type="submit"]').textContent = 'Salvar Alterações';
   });
 
   lista.appendChild(card);
 }
 
-// Salva no localStorage e atualiza a lista
+// Salvar no localStorage e atualizar a lista
 function salvarEAtualizar() {
   localStorage.setItem('entrevistas', JSON.stringify(entrevistas));
   mostrarEntrevistas();
 }
 
-// Mostra todas as entrevistas na tela
+// Mostrar todas as entrevistas
 function mostrarEntrevistas() {
   lista.innerHTML = '';
   entrevistas.forEach((entrevista, index) => {
@@ -39,7 +53,7 @@ function mostrarEntrevistas() {
   });
 }
 
-// Evento do formulário
+// Evento de envio do formulário
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -53,10 +67,19 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  entrevistas.push({ nome, curso, status, nivel });
+  const novaEntrevista = { nome, curso, status, nivel };
+
+  if (editIndex !== null) {
+    entrevistas[editIndex] = novaEntrevista;
+    editIndex = null;
+    form.querySelector('button[type="submit"]').textContent = 'Adicionar Entrevista';
+  } else {
+    entrevistas.push(novaEntrevista);
+  }
+
   salvarEAtualizar();
   form.reset();
 });
 
-// Carregar entrevistas ao abrir página
+// Inicializa
 mostrarEntrevistas();

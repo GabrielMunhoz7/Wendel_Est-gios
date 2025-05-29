@@ -121,3 +121,38 @@ form button:hover {
 .card button:hover {
   background-color: #c0392b;
 }
+
+.card button {
+  margin-top: 0.7rem;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: bold;
+}
+
+.card .btn-excluir {
+  background-color: #e74c3c;
+}
+
+.card .btn-excluir:hover {
+  background-color: #c0392b;
+}
+
+.card .btn-editar {
+  background-color: #f39c12;
+}
+
+.card .btn-editar:hover {
+  background-color: #d68910;
+}
+
+/* Botões lado a lado */
+.card .btn-editar,
+.card .btn-excluir {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-top: 0.7rem;
+}
